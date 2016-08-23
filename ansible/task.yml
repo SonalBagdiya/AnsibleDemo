@@ -1,0 +1,11 @@
+---
+- hosts:
+    - 10.0.15.21
+    - 10.0.15.20
+  tasks:
+  - name: Update apt repo
+    apt: update_cache=yes
+  - name: Install dependencies
+    apt: name={{item}} state=installed
+    with_items:
+      - git

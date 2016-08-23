@@ -1,0 +1,12 @@
+---
+- hosts:
+    - 10.0.15.21    
+  become: yes
+  user: vagrant
+  tasks:
+  - name: Update apt repo
+    apt: update_cache=yes
+  - name: Install dependencies
+    apt: name={{item}} state=installed
+    with_items:
+      - git
